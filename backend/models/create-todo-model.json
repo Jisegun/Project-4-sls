@@ -6,13 +6,13 @@
     "name": {
       "type": "string"
     },
-    "dueDate": {
+    "description": {
       "type": "string"
     }
   },
   "required": [
     "name",
-    "dueDate"
+    "description"
   ],
   "additionalProperties": false
 }

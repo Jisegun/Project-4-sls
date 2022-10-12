@@ -96,8 +96,8 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
         todos,
         loadingTodos: false
       })
-    } catch (e) {
-      alert(`Failed to fetch todos: ${(e as Error).message}`)
+    } catch (e:any) {
+      alert(`Failed to fetch todos: ${e.message}`)
     }
   }
 
@@ -111,7 +111,7 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
         {this.renderTodos()}
       </div>
     )
-  }
+  };
 
   renderCreateTodoInput() {
     return (
@@ -211,4 +211,4 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
 
     return dateFormat(date, 'yyyy-mm-dd') as string
   }
-}
+};

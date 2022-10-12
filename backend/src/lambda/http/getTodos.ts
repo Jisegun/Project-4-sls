@@ -1,6 +1,6 @@
 import 'source-map-support/register'
 import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler} from 'aws-lambda'
-import {  getAlltodos} from '../../helpers/todos'
+import {  getAlltodos} from '../../bussinessLogic/todos'
 
 // TODO: Get all TODO items for a current user
 export const handler: APIGatewayProxyHandler =

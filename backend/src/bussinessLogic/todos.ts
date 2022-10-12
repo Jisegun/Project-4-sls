@@ -1,4 +1,4 @@
-import { TodosAccess } from './todosAccess'
+import { TodosAccess } from '../dataLayer/todosAccess'
 import { TodoItem } from '../models/Todoitem'
 import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
@@ -28,7 +28,7 @@ export async function createTodos(
     createdAt: new Date().toISOString(),
     todoId: itemId,
     userId: userId,
-    attachmentUrl: `https://${s3BucketName}.s3.amozonaws.com/$(todoId)`,
+    attachmentUrl: `https://${s3BucketName}.s3.amazonaws.com/$(todoId)`,
     done: false,
     ...createTodosRequest,
   })

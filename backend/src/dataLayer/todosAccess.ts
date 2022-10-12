@@ -1,17 +1,19 @@
-import * as AWS from 'aws-sdk'
-//import * as AWSXRay from 'aws-xray-sdk'
-import { DocumentClient } from "aws-sdk/clients/dynamodb"
+import * as AWS from 'aws-sdk';
+import * as AWSXRay from 'aws-xray-sdk-core';
+import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { Types } from 'aws-sdk/clients/s3';
-import { TodoItem } from '../models/TodoItem'
+import { TodoItem } from '../models/TodoItem';
 import { TodoUpdate } from '../models/TodoUpdate';
 
-//const XAWS = AWSXRay.captureAWS(AWS)
+
+
+const XAWS = AWSXRay.captureAWS(AWS);
 // TODO: Implement the dataLayer logic
 export class TodosAccess {
     constructor(
-      private readonly docClient: DocumentClient = new AWS.DynamoDB.DocumentClient(),
+      private readonly docClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
       private readonly todossTable = process.env.TODOS_TABLE,
-      private readonly s3Client: Types = new AWS.S3({ signatureVersion: 'v4' }),
+      private readonly s3Client: Types = new XAWS.S3({ signatureVersion: 'v4' }),
       private readonly s3BucketName = process.env.TODOS_S3_BUCKET
       ) {
       
