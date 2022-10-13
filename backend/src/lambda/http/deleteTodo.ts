@@ -1,7 +1,7 @@
 import 'source-map-support/register'
 
-import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda'
-import { deleteTodos } from '../../bussinessLogic/todos'
+import { APIGatewayProxyEvent, APIGatewayProxyResult, APIGatewayProxyHandler } from 'aws-lambda';
+import { deleteTodos } from '../../bussinessLogic/todos';
 
 export const handler: APIGatewayProxyHandler =
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {

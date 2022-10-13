@@ -8,6 +8,7 @@ import { TodoUpdate } from '../models/TodoUpdate';
 
 
 const XAWS = AWSXRay.captureAWS(AWS);
+
 // TODO: Implement the dataLayer logic
 export class TodosAccess {
     constructor(
@@ -20,7 +21,7 @@ export class TodosAccess {
       }
      
   async getAlltodos(userId: string): Promise<TodoItem[]> {
-      console.log('Getting all todos list')    
+    console.log('Getting all todos list');    
   
     const params = {
       TableName: this.todossTable,
@@ -41,12 +42,17 @@ export class TodosAccess {
  }
 
   async createTodos(todos: TodoItem): Promise<TodoItem> {
-    await this.docClient.put({
-      TableName: this.todossTable,
-      Item: todos
-    }).promise()
+    console.log("Creating new todo item");
 
-    return todos
+    const params = {
+        TableName: this.todossTable,
+        Item: todos  
+    };
+
+    const result =  await this.docClient.put(params).promise();
+    console.log(result);
+
+    return todos as TodoItem
     }
 
   async updateTodos(userId: string, todoId: string, todos: TodoUpdate): Promise<TodoUpdate> {
@@ -90,7 +96,7 @@ export class TodosAccess {
       return url as string;
   }
   async deleteTodos(userId: String, todoId: String): Promise<string> {
-      console.log("deleting todo");
+      console.log("Deleting todo");
 
         const params = {
             TableName: this.todossTable,
